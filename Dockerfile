@@ -1,16 +1,16 @@
 # Use a lightweight base image
 FROM node:18-alpine
 
-# Set working directory inside the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Copy package*.json to the working directory
+COPY package*.json ./package.json
 
 # Install dependencies
 RUN npm install
 
-# Copy your website files 
+# Copy your website files
 COPY . .
 
 # Expose the port your website will run on
