@@ -1,20 +1,11 @@
-# Use a lightweight base image
-FROM node:18-alpine
+# Use a lightweight Nginx image
+FROM nginx:alpine
 
-# Set the working directory inside the container
-WORKDIR /app
+# Copy files to Nginx public folder
+COPY . /usr/share/nginx/html/
 
-# Copy package*.json to the working directory
-COPY package*.json ./package.json
-
-# Copy other files and directories
-COPY . .
-
-# Install dependencies
-RUN npm install
-
-# Expose the port your website will run on
-EXPOSE 3000
-
-# Start the app
-CMD ["node", "app.js"]
+# Expose port 80
+EXPOSE 80
+git add Dockerfile
+git commit -m "fix: change base image from node to php-apache"
+git push origin main
