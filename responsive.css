@@ -1,0 +1,1608 @@
+/* =========================================================
+   COMPLETE RESPONSIVE OVERRIDES FOR styles.css
+   Load AFTER styles.css
+   Breakpoints:
+     - xsmall: 0 - 420px
+     - small: 421 - 600px
+     - tablet: 601 - 900px
+     - laptop: 901 - 1200px
+     - desktop: 1201 - 1500px
+     - wide: 1501px+
+   ========================================================= */
+
+/* ------------------------------
+   1. Global helpers / base tweaks
+   ------------------------------ */
+
+/* Prevent overflow on very small screens from wide elements */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* make images and embeds scale down */
+img, video, canvas, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* utility to ease width changes on core containers */
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* ------------------------------
+   2. NAVBAR
+   ------------------------------ */
+
+/* Mobile-first: hide desktop nav by default on small viewports,
+   show hamburger and ensure container padding isn't huge. */
+@media (max-width: 992px) {
+  .navbar {
+    height: 68px;
+    padding: 0;
+  }
+  .navbar .container {
+    padding: 0.5rem 1rem !important;
+    align-items: center;
+    gap: .5rem;
+  }
+  .logo { height: 52px; }
+  nav ul, .nav-links { display: none !important; } /* hide desktop nav */
+  .hamburger { 
+    display: flex !important; 
+    align-items: center; 
+    gap: .4rem;
+    cursor: pointer;
+    z-index: 1000;
+    position: relative;
+  }
+  .mobile-menu {
+    top: 68px !important;
+    right: -320px !important;
+    width: 280px !important;
+    height: calc(100vh - 68px) !important;
+    z-index: 1001 !important;
+    position: fixed !important;
+    display: flex !important;
+  }
+  .mobile-menu.active { 
+    right: 0 !important;
+    z-index: 1001 !important;
+  }
+}
+
+/* Slightly larger tablet */
+@media (min-width: 601px) and (max-width: 900px) {
+  .navbar { height: 72px; }
+  .navbar .container { padding: 0.6rem 1.2rem !important; }
+  .logo { height: 58px; }
+}
+
+/* Restore desktop nav display on larger screens */
+@media (min-width: 993px) {
+  .nav-links { display: flex !important; }
+  .hamburger { display: none !important; }
+  .navbar .container { padding: 0.6rem 2rem; } /* reasonable desktop padding */
+}
+
+/* scrolled state smaller tweak for mobile */
+@media (max-width: 992px) {
+  .navbar.scrolled { height: 60px; }
+  .navbar.scrolled .logo { transform: scale(0.88); }
+}
+
+/* ------------------------------
+   3. HERO (orb + content)
+   ------------------------------ */
+
+/* Combined animation for mobile that includes both float and rotate */
+@keyframes orbFloatRotate {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-9px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-9px) rotate(270deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+  }
+}
+
+/* default: stack on small screens and scale orb nicely */
+@media (max-width: 900px) {
+  .hero {
+    padding: 3rem 1rem;
+    min-height: 94vh;
+  }
+  .hero-inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-left: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .hero-content {
+    width: 100% !important;
+    margin-left: 0 !important;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+  .hero-title {
+    font-size: clamp(1.6rem, 6.5vw, 2.6rem);
+    line-height: 1.15;
+  }
+  .hero-subtext { font-size: 1rem; max-width: 36rem; margin: 0 auto 1.25rem; }
+  .hero-buttons { justify-content: center; flex-wrap: wrap; gap: .75rem; }
+  .hero-btn, .hero-btn-outline { padding: 0.7rem 1.2rem; font-size: 0.95rem; }
+  .orb-container {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .75rem;
+  }
+  .orb-img {
+    width: 60% !important;
+    max-width: 280px;
+    margin-left: 0 !important;
+    margin-bottom: .75rem !important;
+    /* Combined float and rotate animation for mobile */
+    animation: orbFloatRotate 30s linear infinite !important;
+    transform-origin: center !important;
+    filter: drop-shadow(0 0 18px rgba(0,150,255,0.45));
+  }
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  .orb-img { 
+    width: 55% !important; 
+    max-width: 250px;
+    /* Combined float and rotate animation */
+    animation: orbFloatRotate 30s linear infinite !important;
+    transform-origin: center !important;
+  }
+  .hero-title { font-size: clamp(1.4rem, 7vw, 2rem); }
+  .hero-subtext { font-size: 0.95rem; }
+  .hero-buttons { flex-direction: column; width: 100%; gap: .6rem; }
+  .hero-btn, .hero-btn-outline { width: 100%; padding: 0.9rem; }
+}
+
+/* tablet and small laptops - keep two column feel but balance widths */
+@media (min-width: 601px) and (max-width: 900px) {
+  .hero-inner { gap: 1rem; margin-left: 0; padding: 0 1rem; }
+  .hero-content { width: 65% !important; max-width: 800px; margin: 0 auto; text-align: left; }
+  .orb-container { width: 35%; display:flex; justify-content:center; }
+  .hero .orb-img { width: 110% !important; margin-left: 0 !important; max-width: 480px !important; }
+}
+
+/* laptop - make orb bigger and shift right */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .hero-inner { 
+    gap: 1rem; 
+    margin-left: 0; 
+    padding: 0 1rem; 
+    flex-direction: row !important;
+  }
+  .hero-content { 
+    width: 60% !important; 
+    max-width: 800px; 
+    margin: 0 auto; 
+    text-align: left; 
+  }
+  .orb-container { 
+    width: 40% !important; 
+    display: flex !important; 
+    justify-content: flex-start !important; 
+    align-items: center !important;
+  }
+  /* Force override with maximum specificity */
+  .hero .orb-container .orb-img,
+  .hero .orb-container img.orb-img,
+  .hero .orb-img,
+  .hero img.orb-img { 
+    width: 160% !important; 
+    margin-left: 5rem !important; 
+    margin-bottom: 2rem !important;
+    max-width: 650px !important;
+    transform-origin: center !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
+
+/* large desktops keep original behavior but ensure not overflowing */
+@media (min-width: 1201px) {
+  .hero { padding: 4rem 2rem; }
+  .hero-content { width: 55% !important; margin-left: 4%; }
+  .orb-container { width: 45%; }
+  .orb-img { width: 130%; margin-left: 12rem; }
+}
+
+/* ------------------------------
+   4. ABOUT and CARDS
+   ------------------------------ */
+
+@media (max-width: 900px) {
+  .about { padding: 3rem 1rem; }
+  .about-intro h2 { font-size: clamp(1.4rem, 6.5vw, 2.2rem); margin-bottom: 1rem; }
+  .mission-vision-cards { flex-direction: column; gap: 1.25rem; align-items: center; }
+  .card { width: 100%; max-width: 520px; padding: 1.6rem 1.25rem; }
+  .card p { font-size: 0.98rem; }
+}
+
+/* medium screens: two cards side-by-side if space */
+@media (min-width: 700px) and (max-width: 1200px) {
+  .mission-vision-cards { flex-direction: row; gap: 1.5rem; justify-content: center; }
+  .card { width: 320px; }
+}
+
+/* ------------------------------
+   5. SERVICES GRID
+   ------------------------------ */
+
+/* reduce column count progressively */
+@media (max-width: 1200px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .row-top { width: 90%; grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .services-grid { grid-template-columns: 1fr; gap: 1rem; padding: 0 1rem; }
+  .row-top { width: 100%; grid-template-columns: 1fr; margin: 0; }
+  .service-box { margin: .5rem 0; padding: 1rem; }
+  .service-box p { width: 92% !important; margin: 0 auto; font-size: 0.98rem; -webkit-line-clamp: 4; line-clamp: 4; }
+  .service-box h3 { font-size: 1.05rem; }
+  .service-box i { font-size: 1.8rem; }
+}
+
+/* ensure service-box texts don't overflow at wider widths */
+@media (min-width: 1201px) and (max-width: 1500px) {
+  .service-box p { width: 18rem; }
+}
+
+
+@media (min-width: 1501px) {
+  .hero .orb-container .orb-img,
+  .hero .orb-container img.orb-img,
+  .hero .orb-img,
+  .hero img.orb-img,
+  .orb-img {
+    margin-left: 15rem !important;  /* <-- your value */
+    margin-bottom: 2rem !important; /* or whatever */
+  }
+}
+  .service-box p { width: 20rem; }
+
+
+/* ------------------------------
+   6. STACKED SERVICES (scroll boxes, timeline)
+   ------------------------------ */
+
+/* general mobile stack behavior: stack vertically, center content */
+@media (max-width: 1000px) {
+  .stacked-services .box {
+    width: 92vw !important;
+    padding: 1.6rem !important;
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    min-height: auto;
+  }
+  .stacked-services .box .box-image { max-width: 100%; margin-top: 1rem; }
+  .stacked-services .box p { width: 100% !important; margin: .8rem 0 0; }
+  .stacked-services .box .box-content { text-align: center !important; }
+  .box p { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+  .timeline-line-bg, .timeline-line-progress { left: 2.2% !important; }
+  .timeline-indicator { left: calc(2.2% ) !important; }
+  .service-tab { display: none !important; } /* tabs not useful on mobile */
+}
+
+/* medium screens: keep some offset but shrink widths */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .stacked-services .box { width: 70vw; padding: 2rem; }
+  .box-image { max-width: 40%; }
+  .box p { width: 32vw; }
+}
+
+/* larger desktops: maintain roomy layout */
+@media (min-width: 1201px) and (max-width: 1500px) {
+  .stacked-services .box { width: 65vw; }
+  .box p { width: 35vw; }
+}
+
+/* ultra-wide */
+@media (min-width: 1501px) {
+  .stacked-services .box { width: 65vw; }
+  .box p { width: 30vw; }
+}
+
+@media (min-width: 1001px) {
+  .stacked-services .box,
+  .stacked-services .box .box-content,
+  .box p {
+    text-align: left !important;
+  }
+}
+
+/* ------------------------------
+   7. CLIENTS CAROUSEL / LOGOS
+   ------------------------------ */
+
+@media (max-width: 900px) {
+  .clients-title { font-size: 1.6rem; margin-bottom: 1.6rem; }
+  .logo-card { width: 5.6rem; height: 5.6rem; }
+  .carousel-track { gap: 1.25rem; }
+}
+
+@media (max-width: 600px) {
+  .logo-card { width: 5rem; height: 5rem; }
+  .carousel-track { gap: 1rem; }
+}
+
+/* CLIENT LOGO FIX — MATCH THESMARTBRIDGE STYLE */
+.logo-card {
+  width: 170px;
+  height: 90px;
+  background: #ffffff0f;
+  border-radius: 10px;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  backface-visibility: hidden;
+}
+
+.logo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* forces perfect scaling */
+  transition: 0.3s ease;
+  opacity: 0.9;
+}
+
+.logo-card:hover img {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+
+/* ------------------------------
+   8. CONTACT (modal + form)
+   ------------------------------ */
+
+@media (max-width: 992px) {
+  .contact { padding: 3.5rem 1rem; }
+  .modal-overlay { padding: .75rem; }
+  .modal-content { max-width: 92%; padding: 1.25rem; border-radius: 12px; }
+  .modal-content h2 { font-size: 1.4rem; }
+  .form-row { grid-template-columns: 1fr; gap: .75rem; }
+  .contact-form .hero-btn { width: 100%; padding: .9rem; }
+}
+
+@media (max-width: 420px) {
+  .modal-content { padding: 1rem; }
+  .modal-content > p { font-size: 0.95rem; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------
+   9. FOOTER
+   ------------------------------ */
+
+@media (max-width: 992px) {
+  .site-footer { padding: 2.5rem 1rem; font-size: 0.95rem; }
+  .footer-container { width: 100%; padding: 0 1rem; }
+  .footer-top { flex-direction: column; gap: 1rem; align-items: stretch; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer-subscribe input { width: 100%; margin-bottom: .5rem; }
+  .footer-col { flex: 1 1 100%; }
+}
+
+/* ------------------------------
+   10. MISC ELEMENTS / SMALL UI TWEAKS
+   ------------------------------ */
+
+/* back-to-top visibility on small screens: keep clickable but small */
+@media (max-width: 420px) {
+  .back-to-top { width: 40px; height: 40px; right: 16px; bottom: 16px; font-size: 1.1rem; }
+}
+
+/* modal-scrollbar usability on small devices */
+@media (max-width: 600px) {
+  .modal-content { max-height: 80vh; overflow-y: auto; }
+}
+
+/* when elements are animated into view, keep transform consistent on small screens */
+@media (max-width: 900px) {
+  .service-box, .card, .box, .hero-content { transform: translateY(0) !important; opacity: 1 !important; transition: none !important; }
+}
+
+/* ensure left-positioned service-tab doesn't clip on narrow windows */
+@media (max-width: 1200px) {
+  .service-tab { left: 6% !important; transform: translateX(-50%); }
+}
+
+/* fix for any leftover fixed large padding that might come from styles.css */
+@media (max-width: 992px) {
+  .navbar .container, .footer-container { padding-left: 1rem !important; padding-right: 1rem !important; }
+}
+
+/* ------------------------------
+   11. Accessibility & touch targets
+   ------------------------------ */
+
+/* enlarge clickable targets slightly on mobile */
+@media (max-width: 700px) {
+  nav a, .hero-btn, .hero-btn-outline, .see-more, .explore-btn-products, .logo-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  nav a { padding: 10px 12px; }
+}
+
+/* final safety: prevent any horizontal scroll introduced by transforms/animations */
+@media (max-width: 900px) {
+  * { -webkit-overflow-scrolling: touch; }
+}
+
+/* === FOOTER: Quick Links + Address side-by-side on mobile === */
+@media (max-width: 768px) {
+
+  /* Make the first two columns appear in one row */
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  /* Quick Links */
+  .footer-top .footer-col:nth-child(1) {
+    width: 48%;
+  }
+
+  /* Address */
+  .footer-top .footer-col:nth-child(2) {
+    width: 48%;
+  }
+
+  /* Subscribe stays full width */
+  .footer-top .footer-col:nth-child(3) {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .footer-top {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    gap: 1.5rem;
+  }
+
+  .quick-links,
+  .address-col {
+    width: 48% !important;
+  }
+
+  .subscribe-col {
+    width: 100% !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .modal-overlay {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+
+    overflow-y: auto !important;
+
+    padding: 2rem 1rem !important;
+    padding-top: calc(1.5rem + env(safe-area-inset-top)) !important;
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)) !important;
+  }
+
+  .modal-content {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+
+    width: 100% !important;
+    max-width: 520px !important;
+
+    margin: 0 auto !important;
+    padding: 1.25rem !important;
+
+    max-height: none !important;
+    overflow-y: auto !important;
+
+    border-radius: 18px !important;
+  }
+}
+
+
+/* =========================================================
+   ADDITIONAL RESPONSIVE ENHANCEMENTS
+   ========================================================= */
+
+/* Body padding adjustment for mobile navbar */
+@media (max-width: 992px) {
+  body {
+    padding-top: 68px;
+  }
+}
+
+@media (min-width: 993px) {
+  body {
+    padding-top: 80px;
+  }
+}
+
+/* ------------------------------
+   TECH LIST RESPONSIVENESS
+   ------------------------------ */
+
+@media (max-width: 1000px) {
+  .tech-list {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    margin-top: 1rem !important;
+  }
+  
+  .tech-list ul {
+    padding-left: 1.5rem;
+  }
+  
+  .tech-list ul h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #63b3ff;
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-list {
+    gap: 1rem !important;
+  }
+  
+  .tech-list ul {
+    padding-left: 1.25rem;
+  }
+  
+  .tech-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+}
+
+/* ------------------------------
+   ABOUT SECTION TEXT
+   ------------------------------ */
+
+@media (max-width: 600px) {
+  .about-intro p {
+    font-size: 1rem !important;
+    line-height: 1.6;
+    padding: 0 0.5rem;
+  }
+  
+  .about-intro h2 {
+    font-size: clamp(1.3rem, 7vw, 1.9rem) !important;
+  }
+}
+
+/* ------------------------------
+   SERVICES SECTION
+   ------------------------------ */
+
+@media (max-width: 600px) {
+  .services {
+    padding: 3rem 0 !important;
+  }
+
+
+  @media (min-width: 1501px) {
+  .hero .orb-container .orb-img,
+  .hero .orb-container img.orb-img,
+  .hero .orb-img,
+  .hero img.orb-img,
+  .orb-img {
+    margin-left: 15rem !important;  /* <-- your value */
+    margin-bottom: 2rem !important; /* or whatever */
+  }
+}
+  .services h2 {
+    font-size: 1.8rem !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service-box {
+    padding: 1.2rem 0.8rem !important;
+  }
+  
+  .service-box i {
+    font-size: 1.6rem !important;
+  }
+  
+  .service-box h3 {
+    font-size: 1rem !important;
+    margin-top: 0.8rem;
+  }
+  
+  .service-box p {
+    font-size: 0.9rem !important;
+    line-height: 1.5;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+  }
+  
+  .see-more {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+/* ------------------------------
+   STACKED SERVICES BOXES
+   ------------------------------ */
+
+@media (max-width: 1000px) {
+  .stacked-services h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    top: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .box h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 0.8rem;
+  }
+  
+  .box p {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 600px) {
+  .stacked-services {
+    padding-bottom: 3vh;
+  }
+  
+  .stacked-services h2 {
+    font-size: 1.4rem !important;
+    top: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .stacked-services .box {
+    padding: 1.25rem !important;
+    margin-bottom: 2.5rem !important;
+    border-radius: 16px;
+  }
+  
+  .box h3 {
+    font-size: 1.2rem !important;
+    margin-bottom: 0.6rem;
+  }
+  
+  .box p {
+    font-size: 0.9rem !important;
+    line-height: 1.5;
+    text-align: center !important;
+  }
+  
+  .box-image {
+    max-width: 100% !important;
+    margin-top: 1rem;
+    border-radius: 12px;
+  }
+  
+  .explore-btn-products {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-service,
+  .blog-card,
+  .blogs,
+  .blog-post .container {
+    text-align: center !important;
+  }
+
+  .blog-service p,
+  .blog-card p,
+  #postContent p,
+  #postMeta {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .blog-post h1,
+  .blog-post h2,
+  .blog-post h3 {
+    text-align: center !important;
+  }
+}
+
+/* ------------------------------
+   CLIENT CAROUSEL
+   ------------------------------ */
+
+/* Ensure carousel wrapper handles overflow properly */
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .clients-carousel {
+    padding: 2rem 0;
+  }
+  
+  .clients-title {
+    font-size: 1.4rem !important;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .logo-card {
+    width: 4.5rem !important;
+    height: 4.5rem !important;
+  }
+  
+  .carousel-track {
+    gap: 0.8rem !important;
+  }
+  
+  .carousel-wrapper::before,
+  .carousel-wrapper::after {
+    display: none; /* Hide gradient overlays on mobile for cleaner look */
+  }
+}
+
+@media (max-width: 420px) {
+  .logo-card {
+    width: 4rem !important;
+    height: 4rem !important;
+  }
+  
+  .carousel-track {
+    gap: 0.6rem !important;
+  }
+}
+
+/* ------------------------------
+   CONTACT SECTION
+   ------------------------------ */
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 3rem 1rem !important;
+  }
+  
+  .contact h2 {
+    font-size: 1.6rem !important;
+    margin-bottom: 1rem;
+  }
+  
+  .contact p {
+    font-size: 1rem !important;
+    margin-bottom: 2.5rem;
+    padding: 0 0.5rem;
+  }
+  
+  .hero-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ------------------------------
+   FOOTER ENHANCEMENTS
+   ------------------------------ */
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 2rem 1rem 1.5rem !important;
+  }
+  
+  .footer-col h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .footer-col ul li {
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .footer-address .text-box p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .footer-subscribe input {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.9rem;
+  }
+  
+  .footer-subscribe button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .socials a {
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ------------------------------
+   NAVBAR MOBILE MENU
+   ------------------------------ */
+
+@media (max-width: 992px) {
+  .mobile-menu li a {
+    font-size: 1rem;
+    padding: 10px 8px;
+  }
+  
+  .mobile-menu {
+    padding: 1.5rem 1.25rem;
+    gap: 1rem;
+    z-index: 1001 !important;
+  }
+  
+  /* Prevent body scroll when menu is open */
+  body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  /* Ensure hamburger is clickable */
+  .hamburger {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 1002 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .mobile-menu {
+    width: 260px !important;
+    right: -280px !important;
+    z-index: 1001 !important;
+  }
+  
+  .mobile-menu.active {
+    right: 0 !important;
+    z-index: 1001 !important;
+  }
+  
+  .hamburger {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 1002 !important;
+  }
+}
+
+/* ------------------------------
+   HERO BUTTONS STACKING
+   ------------------------------ */
+
+@media (max-width: 420px) {
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.6rem;
+  }
+  
+  .hero-btn,
+  .hero-btn-outline {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    text-align: center;
+  }
+}
+
+/* ------------------------------
+   FORM INPUTS MOBILE
+   ------------------------------ */
+
+@media (max-width: 600px) {
+  .form-group label {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+  }
+  
+  .form-group textarea {
+    min-height: 100px;
+  }
+}
+
+/* ------------------------------
+   PREVENT HORIZONTAL SCROLL
+   ------------------------------ */
+@media (max-width: 1200px) {
+  * {
+    max-width: 100%;
+  }
+  
+  .container {
+    overflow-x: hidden;
+  }
+}
+
+/* ------------------------------
+   IMAGE RESPONSIVENESS
+   ------------------------------ */
+
+@media (max-width: 1000px) {
+  .box-image {
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 600px) {
+  .box-image {
+    max-height: 250px;
+  }
+  
+  .orb-img {
+    max-height: 300px;
+    /* Combined float and rotate animation */
+    animation: orbFloatRotate 30s linear infinite !important;
+    transform-origin: center !important;
+  }
+}
+
+/* ------------------------------
+   TIMELINE INDICATOR MOBILE
+   ------------------------------ */
+
+@media (max-width: 1000px) {
+  .timeline-line-bg,
+  .timeline-line-progress {
+    width: 3px !important;
+  }
+  
+  .timeline-indicator {
+    width: 12px !important;
+    height: 12px !important;
+    left: calc(2.2% - 4.5px) !important;
+  }
+}
+
+/* ------------------------------
+   CARD RESPONSIVENESS
+   ------------------------------ */
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+/* ------------------------------
+   BACK TO TOP BUTTON
+   ------------------------------ */
+
+@media (max-width: 600px) {
+  .back-to-top {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .back-to-top {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+/* ------------------------------
+   LANDSCAPE ORIENTATION FIXES
+   ------------------------------ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+  
+  .hero-inner {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .hero-content {
+    width: 60% !important;
+  }
+  
+  .orb-container {
+    width: 40% !important;
+  }
+  
+  .orb-img {
+    width: 100% !important;
+    max-width: 300px;
+  }
+  
+  .modal-content {
+    max-height: 85vh;
+  }
+}
+
+/* ------------------------------
+   LARGE TABLETS (iPad Pro, etc.)
+   ------------------------------ */
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+  /* This breakpoint is now covered by laptop breakpoint above */
+}
+
+@media (min-width: 1201px) and (max-width: 1366px) {
+  .hero-content {
+    width: 58% !important;
+  }
+  
+  .orb-container {
+    width: 42% !important;
+  }
+  
+  .hero .orb-img {
+    width: 120% !important;
+    margin-left: 8rem !important;
+  }
+  
+  .stacked-services .box {
+    width: 68vw;
+  }
+  
+  .box p {
+    width: 33vw;
+  }
+}
+
+/* ------------------------------
+   ULTRA-WIDE SCREENS
+   ------------------------------ */
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  .hero-content {
+    max-width: 700px;
+  }
+  
+  .stacked-services .box {
+    width: 50vw;
+    max-width: 1000px;
+  }
+}
+
+/* ------------------------------
+   TOUCH DEVICE IMPROVEMENTS
+   ------------------------------ */
+
+@media (hover: none) and (pointer: coarse) {
+  .service-box:hover {
+    transform: none;
+  }
+  
+  .service-box:active {
+    transform: translateY(2px);
+  }
+  
+  .hero-btn:active,
+  .hero-btn-outline:active {
+    transform: scale(0.98);
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .card:active {
+    transform: translateY(-5px);
+  }
+}
+
+/* ------------------------------
+   PRINT STYLES
+   ------------------------------ */
+
+@media print {
+  .navbar,
+  .hamburger,
+  .mobile-menu,
+  .back-to-top,
+  .modal-overlay,
+  .hero-bg,
+  .hero-overlay,
+  canvas {
+    display: none !important;
+  }
+  
+  body {
+    padding-top: 0;
+  }
+  
+  .hero,
+  .about,
+  .services,
+  .stacked-services,
+  .contact {
+    page-break-inside: avoid;
+  }
+}
+
+/* =========================================================
+   FINAL OVERRIDE FOR LAPTOP ORB SIZE
+   This ensures the laptop orb size takes precedence
+   ========================================================= */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .hero section .orb-container .orb-img,
+  .hero .orb-container img[class*="orb"],
+  .hero .orb-container .orb-img,
+  .hero img.orb-img,
+  .hero .orb-img {
+    width: 160% !important;
+    max-width: 650px !important;
+    margin-left: 5rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact .container {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+    min-height: 300px !important;   /* this fixes the 166px issue */
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+.modal-overlay {
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+@media (max-width: 900px) {
+  .blog-service-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+}
+
+.blog-post img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+  height: auto;
+}
+ 
+/* Mobile: full width */
+.blog-post img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.25rem 0;      /* only top & bottom */
+  height: auto;
+  object-fit: cover;
+}
+
+/* Tablet & Desktop: centered narrower */
+@media (min-width: 700px) {
+  .blog-post img {
+    width: 80%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.blog-post img {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 1.5rem 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+  object-fit: cover;
+}
+
+/* TABLET PORTRAIT — STACK TEXT ABOVE ORB */
+@media (min-width: 600px) and (max-width: 900px) {
+
+  .hero-inner {
+    flex-direction: column !important;
+    margin-left: 0 !important;
+    padding: 0 1rem !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  .orb-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .orb-img {
+    width: 70% !important;
+    max-width: 360px !important;
+    margin: 1rem 0 0 0 !important;
+  }
+}
+
+/* TABLET LANDSCAPE — TWO COLUMN, FIX ORB SIZE & ALIGNMENT */
+@media (min-width: 900px) and (max-width: 1200px) {
+
+  .hero-inner {
+    flex-direction: row !important;
+    gap: 2rem !important;
+    margin-left: 0 !important;
+    padding: 0 2rem !important;
+    align-items: center !important;
+  }
+
+  .hero-content {
+    width: 55% !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+
+  .orb-container {
+    width: 45% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .orb-img {
+    width: 110% !important;
+    max-width: 500px !important;
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+/* OVERRIDE DESKTOP MARGINS THAT WERE LEAKING INTO TABLETS */
+@media (max-width: 1200px) {
+  .hero-inner {
+    margin-left: 0 !important;
+  }
+  .orb-img {
+    margin-left: 0 !important;
+  }
+}
+
+/* ===== FIX SERVICES SECTION FOR TABLETS ===== */
+@media (min-width: 600px) and (max-width: 1200px) {
+
+  /* Make the services section use more width */
+  .services .container {
+    max-width: 95% !important;
+  }
+
+  /* Make grid exactly 2 per row on tablets */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: 100% !important;
+    gap: 1.2rem !important;
+    justify-items: center !important;
+  }
+
+  /* Fix the top row (remove the stupid 66.67%) */
+  .row-top {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Ensure each service box fills properly */
+  .service-box {
+    width: 100% !important;
+    max-width: 420px !important;
+  }
+
+  /* Prevent text from shrinking too much */
+  .service-box p {
+    width: 100% !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-track {
+    gap: 0.8rem !important;
+  }
+  .logo-card {
+    width: 110px !important;
+    height: 60px !important;
+  }
+}
+
+
+.timeline-indicator {
+  display: none !important;
+}
+
+/* ===== FIX STACKED SERVICES CONTENT WIDTH ===== */
+.stacked-services .box p {
+  width: 100% !important;
+  max-width: 100% !important;
+  text-align: left !important;
+}
+
+/* fix the two-column layout so content + image use space evenly */
+.stacked-services .box {
+  display: flex;
+  gap: 2rem;
+}
+
+/* text area should take proper space */
+.stacked-services .box .box-content {
+  width: 55% !important;
+}
+
+/* image should not dominate */
+.stacked-services .box .box-image {
+  width: 45% !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 900px) {
+  .stacked-services .box .box-content {
+    width: 100% !important;
+  }
+  .stacked-services .box .box-image {
+    width: 100% !important;
+  }
+}
+
+/* ==== FINAL POLISH: TIMELINE ALIGNMENT ==== */
+.stacked-services .timeline-line {
+  height: auto !important;
+}
+
+.stacked-services {
+  position: relative;
+  overflow: visible;
+}
+
+/* smaller screens */
+@media (max-width: 700px) {
+  .stacked-services .timeline-line {
+    left: 15px !important;
+  }
+}
+
+
+/* Reduce image size for Manpower Consultancy (box4) and Products (box5) */
+.box3 .box-image,
+.box4 .box-image,
+.box5 .box-image {
+  width: 45%;       /* adjust as needed */
+  max-width: 350px; /* ensures it never gets too big */
+  object-fit: contain;
+}
+
+/* Move hero text up ONLY on laptop/desktop */
+@media (min-width: 1200px) {
+  .hero-content {
+    margin-top: -8rem !important;   /* adjust as needed */
+  }
+  .blogs {
+    margin-top: -5rem !important;   /* adjust as needed */
+  }
+}
+
+.back-to-top {
+  position: fixed !important;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999 !important;
+}
+/* Fix back-to-top button position on mobile */
+@media (max-width: 600px) {
+  .back-to-top {
+    right: 1.5rem !important;     /* closer to right edge */
+    bottom: 1rem !important;  /* a bit lower */
+    transform: translateX(20px); /* shifts it OUTWARD away from content */
+  }
+}
+
+@media (max-width: 600px) {
+/* Fix unwanted horizontal scroll from orb */
+.orb-container,
+.orb-img {
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.hero-inner {
+  overflow-x: hidden !important;
+}
+
+.hero {
+  overflow-x: hidden !important;
+}
+}
+
+@media (max-width: 600px) and (orientation: landscape){
+/* Fix unwanted horizontal scroll from orb */
+.orb-container,
+.orb-img {
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.hero-inner {
+  overflow-x: hidden !important;
+}
+
+.hero {
+  overflow-x: hidden !important;
+}
+}
+/* Fix horizontal overflow on title page for mid-size & large tablets */
+@media (min-width: 700px) and (max-width: 1200px) {
+  .orb-container,
+.orb-img {
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.hero-inner {
+  overflow-x: hidden !important;
+}
+
+.hero {
+  overflow-x: hidden !important;
+  }
+}
+
+/* Fix Contact Us vertical scroll on laptop/tablet when width gets reduced */
+@media (min-width: 768px) {
+  .contact-section {
+    min-height: 1000px !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+/* ===== FORCE CONTACT CONTAINER TO FIT NARROW LAPTOP / DEVTOOLS WIDTHS ===== */
+@media (max-width: 1100px) {
+  /* Make the contact section grow instead of scrolling inside */
+  .contact {
+    overflow: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure the inner container never tries to be wider than the viewport */
+  .contact .container,
+  #contact .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    height: auto !important;
+  }
+
+  /* Defensive: make any direct children expand rather than scroll */
+  .contact .container > * {
+    min-width: 0 !important; /* prevents flex children from forcing overflow */
+    box-sizing: border-box !important;
+  }
+
+  /* Also reduce large desktop navbar padding which can leak into layout */
+  .navbar .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+.logo-card {
+  flex: 0 0 auto;
+  margin-right: 64px; /* matches your JS */
+}

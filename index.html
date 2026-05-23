@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rubix IT Solution</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/favicon.png" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo-container">
+        <a href="index.html"><img src="images/logo-rubix.png" alt="Rubix Logo" class="logo"></a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#products">Our Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contactOverlay">Contact</a></li>
+        </ul>
+
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Mobile Menu (hidden until clicked) -->
+        <ul class="mobile-menu">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-bg"></div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-inner container">
+      <div class=" hero-content">
+        <h2 class="hero-title">Transforming Technology Into<br> Real-World Impact</h2>
+        <p class="hero-subtext">
+          Empowering Businesses with Trusted IT Solutions & Skilled Talent.
+          From web and AI technology services to complete business solutions, we deliver reliable,
+          ethical, and cost-effective support that helps you meet your goals—on time and with confidence.
+        </p>
+        <div class="hero-buttons">
+          <a href="#services" class="hero-btn">Explore Services</a>
+          <a href="#contactOverlay" class="hero-btn-outline">Talk to Us</a>
+        </div>
+      </div>
+      <div class="orb-container">
+        <img src="images/orb.png" alt="AI Orb" class="orb-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-bg-layer"></div>
+    <div class="container">
+      <div class="about-intro">
+        <h2>About <span class="gradient-text">Rubix IT Solution</span></h2>
+        <p>
+          At Rubix IT Solution, we merge <span class="highlight">technology</span> and
+          <span class="highlight">people</span> to deliver powerful solutions that empower
+          businesses globally. From web development to AI services and staffing, we provide ethical,
+          innovative, and cost-effective solutions tailored to your needs.
+        </p>
+      </div>
+
+      <div class="mission-vision-cards">
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Our Mission</h3>
+          <p>
+            Our mission is to create intelligent, AI-powered digital solutions that automate workflows, strengthen
+            security, improve customer experiences, and help businesses scale with confidence.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>
+            To become a trusted global partner for digital transformation by delivering intelligent, AI-driven, secure,
+            and high-performance solutions that make complex business processes simple.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="row-top">
+          <div class="service-box">
+            <i class="fas fa-code"></i>
+            <h3>Web Application Development</h3>
+            <p>
+              Rubix offers a full cycle of application development,
+              including development, testing, deployment, and maintenance.
+            </p>
+            <a href="#web-development" class="see-more">Explore</a>
+          </div>
+          <div class="service-box">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <h3>Mobile Application Development</h3>
+            <p>
+              Our creative team builds customized, user-friendly mobile apps across Android, iOS, and
+              cross-platform frameworks.
+            </p>
+            <a href="#app-development" class="see-more">Explore</a>
+          </div>
+        </div>
+        <div class="service-box">
+          <i class="fa-solid fa-robot"></i>
+          <h3>AI Services</h3>
+          <p>
+            We build AI systems that automate tasks, understand data, and deliver insights that elevate your business to
+            the next level.
+          </p>
+          <a href="#ai-services" class="see-more">Explore</a>
+        </div>
+        <div class="service-box">
+          <i class="fas fa-users"></i>
+          <h3>Manpower Consultancy</h3>
+          <p>
+            Our staffing solutions help you find the right candidates within your timeline through a
+            structured, reliable, and efficient process.
+          </p>
+          <a href="#manpower-consultancy" class="see-more">Explore</a>
+        </div>
+        <div class="service-box">
+          <i class="fas fa-users"></i>
+          <h3>AI Products</h3>
+          <p>
+            We offer AI-powered products designed to simplify and optimize core business operations at an enterprise
+            standard.
+          </p>
+          <a href="#manpower-consultancy" class="see-more">Explore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stacked Scroll Boxes -->
+  <section class="stacked-services">
+    <canvas id="particles-canvas-stacked" class="particles-canvas"></canvas>
+    <h2>Future-Ready Solutions. Built Today.</h2>
+    <div class="timeline-line-bg"></div>
+    <div class="timeline-line-progress"></div>
+    <div class="timeline-indicator"></div>
+
+    <div class="container">
+
+      <div class="box box1" id="web-development">
+        <div class="box-content">
+          <h3>Web Application Development</h3>
+          <p>We create modern, responsive, and high-performance websites that help your business stand out online. Every
+            project starts with understanding your brand, your goals, and the experience you want your users to have.
+            From clean UI layouts to smooth interactions and optimized loading speed, we build websites that not only
+            look great but also work flawlessly across all devices.
+            Our development process focuses on scalability, SEO-friendly structure, and long-term maintainability —
+            ensuring your site continues to perform as your business grows.</p>
+        </div>
+        <img src="images/webdev-right.jpg" alt="Web Development" class="box-image" />
+        <div class="tech-list">
+          <h4 class="tech-stack-title">Technology Stack</h4>
+          <ul>
+            <li>Python</li>
+            <li>FastAPI</li>
+          </ul>
+          <ul>
+            <li>ReactJs, HTML, CSS</li>
+            <li>Azure, AWS</li>
+          </ul>
+          <ul>
+            <li>SQL, MySQL, PostgreSQL</li>
+            <li>Web Services</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box box2" id="app-development">
+        <div class="box-content">
+          <h3>Mobile Application Development</h3>
+          <p>We build high-quality, scalable mobile applications designed to deliver smooth performance and an intuitive
+            user experience. Our approach begins with understanding your business requirements and the problems your app
+            needs to solve. We develop apps that run reliably across Android and iOS, optimized for speed, battery
+            efficiency, and long-term maintainability. Whether it’s a customer-facing app or an internal business tool,
+            we focus on stability, security, and usability to help your product grow sustainably.</p>
+        </div>
+        <img src="images/appdev-right.png" alt="App Development" class="box-image" />
+        <div class="tech-list">
+          <ul>
+            <h4>Android</h4>
+            <li>Kotlin</li>
+            <li>Android SDK</li>
+          </ul>
+          <ul>
+            <h4>iOS</h4>
+            <li>Swift</li>
+            <li>Xcode</li>
+          </ul>
+          <ul>
+            <h4>Cross-Platform</h4>
+            <li>React Native</li>
+            <li>Flutter</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box box3" id="ai-services">
+        <div class="box-content">
+          <h3>AI Services</h3>
+          <p>We develop practical AI-driven solutions that help reduce manual work, increase efficiency, and unlock
+            valuable insights from your data. Our services include everything from implementing intelligent chat
+            assistants to creating automated workflows that save time and reduce operational costs.
+            By combining machine learning, natural language processing, and predictive analytics, we build tools that
+            help you make smarter decisions and deliver better experiences to your customers. All solutions are
+            optimized for accuracy, speed, and long-term adaptability. </p>
+        </div>
+        <img src="images/aiservices-right.png" alt="AI services" class="box-image" />
+        <div class="tech-list">
+          <h4 class="tech-stack-title">Core technologies</h4>
+          <ul>
+            <li>Computer Vision Models</li>
+            <li>NLP Pipelines</li>
+            <li>Emotional Intelligence</li>
+          </ul>
+          <ul>
+            <li>OpenAI & LLM APIs</li>
+            <li>LangChain</li>
+            <li>RAG Systems</li>
+          </ul>
+          <ul>
+            <li>Automation Agents</li>
+            <li>Data Processing Pipelines</li>
+            <li>Cloud AI (Azure / AWS / GCP)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box box4" id="manpower-consultancy">
+        <div class="box-content">
+          <h3>Manpower Consultancy</h3>
+          <p>Rubix has launched its Professional Staffing Services with a commitment to help organizations find
+            high-quality candidates within the promised time frame, both locally and nationally. Our dedicated staffing
+            team follows a structured, methodical recruitment process that ensures every role is filled with the right
+            talent, backed by consistent communication and measurable results.
+
+            In addition to traditional staffing capabilities, Rubix integrates advanced AI-driven recruitment tools to
+            accelerate and strengthen the hiring cycle. Our AI screening models help analyze resumes, validate skill
+            matches, detect inconsistencies, and rank applicants based on role requirements. This allows your
+            organization to receive a pre-vetted shortlist faster, with higher accuracy and reduced manual effort.
+
+            Our process is built to support full-cycle hiring, covering sourcing, screening, assessments, interviews,
+            and onboarding coordination. With Rubix as your staffing partner, you benefit from both experienced human
+            recruiters and intelligent automation, resulting in a dependable hiring pipeline, improved candidate
+            quality, and significantly shorter turnaround times.</p>
+        </div>
+        <img src="images/consultancy-right.png" alt="Manpower Consultancy" class="box-image" />
+      </div>
+      <div class="box box5" id="products">
+        <div class="box-content">
+          <h3>Our Products</h3>
+          <!-- <p>We offer a suite of AI-powered products engineered to automate workflows, eliminate repetitive tasks, and improve decision-making across your business. Our solutions are designed to integrate smoothly with your existing systems and deliver real, measurable improvements in efficiency.
+
+Our AI Product Capabilities Include:
+
+• Intelligent Chat Assistants
+Automated agents that handle customer queries, onboarding, FAQs, and support tickets with natural, human-like responses — reducing support workload and improving response times.
+
+• Workflow Automation Bots
+AI-driven bots that automate approvals, reminders, status updates, report generation, and daily operational tasks across multiple departments.
+
+• Fraud & Anomaly Detection Models
+Systems that flag suspicious patterns in recruitment, identity verification, financial transactions, and user behavior with real-time alerts.
+
+• Custom AI Integrations & API-based Models
+Tailored machine learning components that plug directly into your CRM, HRMS, ERP, website, or mobile apps.
+</p> -->
+          <p>Nova Mymentor is our flagship AI-powered learning management system designed to teach students their
+            academic syllabus in a personalized, engaging, and structured way. Using adaptive AI, the platform tailors
+            lessons, quizzes, and explanations to each student’s pace while providing instant feedback and 24/7 doubt
+            support. Nova Mymentor combines syllabus-based learning with guided homework assistance, weekly mock tests,
+            and strong conceptual foundation-building for IIT-JEE and NEET aspirants. Beyond academics, features like
+            Brain Gym, hobbies, peer forums, and parent dashboards ensure holistic development, clear progress tracking,
+            and active parent involvement—making learning effective, balanced, and future-ready.</p>
+          <a href="https://dear.rubixitsolution.com/" class="hero-btn explore-btn-products" target="_blank">Explore</a>
+
+        </div>
+        <!-- <img src="images/product-right.png" alt="Products" class="box-image" /> -->
+        <img src="images/Logo Png2.png" alt="Products" class="box-image" />
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Client carousel Section -->
+  <section class="clients-carousel">
+    <h2 class="clients-title">Our Clients</h2>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="logo-card"><img src="images/logo-3vertices.png" alt="3vertices"></div>
+        <div class="logo-card"><img src="images/logo-calibrage.png" alt="calibrage"></div>
+        <div class="logo-card"><img src="images/logo-FrigateGames.png" alt="Frigate Games"></div>
+        <div class="logo-card"><img src="images/logo-richhmindx.png" alt="Richh Mindx AI"></div>
+        <div class="logo-card"><img src="images/logo-kfintech.png" alt="KFintech"></div>
+        <div class="logo-card"><img src="images/logo-jayamsolutions.png" alt="Jayam Solutions"></div>
+        <div class="logo-card"><img src="images/logo-probackers.jpg" alt="Probackers (OPC) Pvt Ltd"></div>
+        <div class="logo-card"><img src="images/logo-xvector.png" alt="xVector Labs"></div>
+        <div class="logo-card"><img src="images/logo-wesecureapp.png" alt="WeSecureApp"></div>
+        <div class="logo-card"><img src="images/logo-versatile.png" alt="Versatile MobiTech"></div>
+        <div class="logo-card"><img src="images/logo-stratapps.png" alt="StratApps"></div>
+        <div class="logo-card"><img src="images/logo-renaudbio.webp" alt="RenaudBio"></div>
+        <div class="logo-card"><img src="images/logo-sightplan.png" alt="SightPlan"></div>
+        <div class="logo-card"><img src="images/logo-readywire.png" alt="Readywire"></div>
+        <div class="logo-card"><img src="images/logo-mlrit.jpg" alt="MLRIT"></div>
+        <div class="logo-card"><img src="images/logo-innovspatial.png" alt="innovspatial"></div>
+        <div class="logo-card"><img src="images/logo-haripriyasempire.jpg" alt="Haripriya's Empire"></div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="blogs" id="blogs">
+  <div class="container">
+    <h2 class="blog-title">Latest Blogs</h2>
+
+    <div class="blog-grid">
+
+      <div class="blog-card">
+        <img src="blog1.png " alt="Blog Image">
+        <h3>How AI Is Transforming Business Operations</h3>
+        <p>Discover how companies leverage AI tools to automate workflows, enhance decision-making, and deliver faster results.</p>
+        <a href="blog.html?post=how-ai-is-transforming-business-operations" class="blog-read">Read More</a>
+      </div>
+
+      <div class="blog-card">
+        <img src="blog2.png" alt="Blog Image">
+        <h3>Building Scalable Web Applications</h3>
+        <p>A breakdown of the latest tools and methods used for developing fast, secure, and scalable web platforms.</p>
+        <a href="blog.html?post=small-business-ai-without-big-budget" class="blog-read">Read More</a>
+      </div>
+
+      <div class="blog-card">
+        <img src="blog3.png" alt="Blog Image">
+        <h3>The Future of Mobile App Development</h3>
+        <p>Explore upcoming trends and technologies shaping the next generation of mobile applications.</p>
+        <a href="blog.html?post=document-intelligence-automation" class="blog-read">Read More</a>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Let's build something amazing together. Reach out to discuss your project today.</p>
+      <a href="#contactOverlay" class="hero-btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Overlay Contact Form (Pure CSS Modal) -->
+  <div id="contactOverlay" class="modal-overlay">
+    <canvas id="contact-particles"></canvas>
+    <a href="#" class="modal-overlay-close"></a>
+    <div class="modal-content">
+      <a href="#" class="modal-close">&times;</a>
+      <h2>Get in Touch</h2>
+      <p>We’d love to hear from you! Fill out the form below and we’ll get back to you soon.</p>
+
+      <form class="contact-form" id="contactForm">
+        <!-- <input type="hidden" name="access_key" value="7b9bc710-97d1-4c55-a2ae-1bff91f6ce33">
+        <input type="hidden" name="subject" value="New Contact Submission">
+        <input type="hidden" name="from_name" value="Rubix IT Solution Website">
+        <input type="checkbox" name="botcheck" id="" style="display: none;"> -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input type="text" id="fname" name="fname" required>
+          </div>
+          <div class="form-group">
+            <label for="llastname">Last Name</label>
+            <input type="text" id="lname" name="lname" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone no.">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" maxlength="10">
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="hero-btn">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+
+        <!-- 1 — QUICK LINKS -->
+        <div class="footer-col quick-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- 2 — ADDRESS -->
+        <div class="footer-col address-col">
+          <h4>Address</h4>
+          <div class="footer-address">
+            <div class="contact-item">
+              <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="text-box">
+                <p>Srinivasa Nilayam,<br> Bachupally Crossroads,<br> Hyderabad, Telangana – 500090</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+              <div class="text-box">
+                <p>info@rubixitsolution.com</p>
+              </div>
+            </div>
+
+            <!-- PHONE (optional) -->
+            <!--
+          <div class="contact-item">
+            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+            <div class="text-box"><p>+91-xxx</p></div>
+          </div>
+          -->
+          </div>
+        </div>
+
+        <!-- 3 — SUBSCRIBE -->
+        <div class="footer-col subscribe-col">
+          <h4>Subscribe</h4>
+          <form class="footer-subscribe">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+        <!-- 4 — SOCIALS (NEW SEPARATE COLUMN) -->
+        <div class="footer-col socials-col">
+          <h4>Socials</h4>
+          <div class="socials">
+            <a href="https://www.linkedin.com/company/one91/" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.facebook.com/Rubix.umamahesh/" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/YOUR-INSTAGRAM-HANDLE/" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Rubix IT Solution. All rights reserved.</p>
+        <a href="privacypolicy.html">PRIVACY POLICY</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+  <script src="particles.js"></script>
+</body>
+
+</html>
